@@ -50,7 +50,7 @@ const products = [
         numReviews: 12,
     },
     {
-        _id: '4',
+        _id: '5',
         name: 'Glenfiddich 15 Year Unique Solera',
         image: '/images/glen15.jpg',
         description: 'Glenfiddich 15 Year Scotch',
@@ -62,7 +62,7 @@ const products = [
         numReviews: 4,
     },
     {
-        _id: '5',
+        _id: '6',
         name: 'J Lohr Cabernet',
         image: '/images/jl.jpg',
         description: 'J Lohr Cabernet Sauvignion',
@@ -74,7 +74,7 @@ const products = [
         numReviews: 4,
     },
     {
-        _id: '6',
+        _id: '7',
         name: 'Remy Martin Cognac',
         image: '/images/rm.jpg',
         description: 'Remy Martin Cognac',
@@ -87,4 +87,4 @@ const products = [
     },
 ]
 
-module.exports = products
+export default products
