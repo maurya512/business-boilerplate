@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container } from 'react-bootstrap'
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Header from './components/Header'
+import Footer from './components/Footer'
+import HomeScreen from './screens/HomeScreen'
 
 const App = () => {
   return (
@@ -11,7 +12,7 @@ const App = () => {
       <main className='py-3'>
         {/* Container reframes everything to the center */}
         <Container>
-          <h1>Welcome to your Web App</h1>
+          <HomeScreen />
         </Container>
       </main>
       <Footer />
