@@ -17,7 +17,7 @@ const App = () => {
         <Container>
           {/* Default route when / path hit */}
           <Route path='/' component={HomeScreen} exact/>
-          <Route path='/prodcut/:id' component={ProductScreen}/>
+          <Route path='/product/:id' component={ProductScreen}/>
 
         </Container>
       </main>
