@@ -2,7 +2,6 @@
 
 const products = [
     {
-        _id: '1',
         name: 'Black Label Whiskey',
         image: '/images/bl.jpg',
         description: 'Black Label Whiskey 750 ML',
@@ -14,7 +13,6 @@ const products = [
         numReviews: 4,
     },
     {
-        _id: '2',
         name: 'Bud Light 6 Pack',
         image: '/images/budl.jpg',
         description: 'Bud Light 6 Pack',
@@ -26,7 +24,6 @@ const products = [
         numReviews: 4,
     },
     {
-        _id: '3',
         name: 'Casa Migos Mezcal',
         image: '/images/cmb.jpg',
         description: 'Casa Migos Mezcal',
@@ -38,7 +35,6 @@ const products = [
         numReviews: 1,
     },
     {
-        _id: '4',
         name: 'Decoy Merlot',
         image: '/images/decoy.jpg',
         description: 'Decoy Merlot 2018',
@@ -50,7 +46,6 @@ const products = [
         numReviews: 12,
     },
     {
-        _id: '5',
         name: 'Glenfiddich 15 Year Unique Solera',
         image: '/images/glen15.jpg',
         description: 'Glenfiddich 15 Year Scotch',
@@ -62,7 +57,6 @@ const products = [
         numReviews: 4,
     },
     {
-        _id: '6',
         name: 'J Lohr Cabernet',
         image: '/images/jl.jpg',
         description: 'J Lohr Cabernet Sauvignion',
@@ -74,7 +68,6 @@ const products = [
         numReviews: 4,
     },
     {
-        _id: '7',
         name: 'Remy Martin Cognac',
         image: '/images/rm.jpg',
         description: 'Remy Martin Cognac',
