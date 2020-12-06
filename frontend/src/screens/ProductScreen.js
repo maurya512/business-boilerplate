@@ -15,7 +15,7 @@ const ProductScreen = ({ match }) => {
             setProduct(data)
         }
         fetchProduct()
-    })
+    },[match])
     return (
         <>
             {/* A button that redirects to the home page */}
