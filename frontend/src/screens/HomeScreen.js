@@ -11,7 +11,7 @@ const HomeScreen = () => {
                 {/* want to loop through products' array of objects and for each product display the product component */}
                 {products.map(product => (
                     //    determines the screen size each product will hold
-                    <Col sm={12} md={6} lg={4} xl={3}>
+                    <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                         {/* Product Component */}
                         <Product product={product} />
                         {/* <h3>{product.image}</h3> */}
