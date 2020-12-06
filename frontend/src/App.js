@@ -1,22 +1,28 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom' 
 import { Container } from 'react-bootstrap'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import HomeScreen from './screens/HomeScreen'
+import ProductScreen from './screens/ProductScreen'
+
 
 const App = () => {
   return (
-    <>
+    <Router>
       <Header />
       {/* bootstrap class of -3 */}
       <main className='py-3'>
         {/* Container reframes everything to the center */}
         <Container>
-          <HomeScreen />
+          {/* Default route when / path hit */}
+          <Route path='/' component={HomeScreen} exact/>
+          <Route path='/prodcut/:id' component={ProductScreen}/>
+
         </Container>
       </main>
       <Footer />
-    </>
+    </Router>
   );
 }
 
