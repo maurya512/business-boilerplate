@@ -19,3 +19,5 @@ const users = [
         isAdmin: true
     }
 ]
+
+export default users
