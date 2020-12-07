@@ -1,15 +1,17 @@
-import React from 'react';
+import React from 'react'
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 // import the react theme to implement
+import store from './store'
 import './bootstrap.min.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
