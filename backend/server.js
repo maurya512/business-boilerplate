@@ -4,27 +4,31 @@ import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 import products from './data/products.js'
 
+import productRoutes from './routes/productRoutes.js'
+
 dotenv.config()
 
 connectDB()
 const app = express()
 
 // get route
-app.get('/', (req, res) => {
-    res.send('API is running.......')
-})
+// app.get('/', (req, res) => {
+//     res.send('API is running.......')
+// })
 
-// api route
-app.get('/api/products', (req,res) => {
-    res.json(products)
-})
+// // api route
+// app.get('/api/products', (req,res) => {
+//     res.json(products)
+// })
 
-// api route for id
-app.get('/api/products/:id', (req, res) => {
-    // finds a product with a specific id from the array of objects and compares that with the id from the url for a match
-    const product = products.find(p => p._id === req.params.id)
-    res.json(product)
-})
+// // api route for id
+// app.get('/api/products/:id', (req, res) => {
+//     // finds a product with a specific id from the array of objects and compares that with the id from the url for a match
+//     const product = products.find(p => p._id === req.params.id)
+//     res.json(product)
+// })
+
+app.use('/api/products', productRoutes)
 
 
 const PORT = process.env.PORT || 5000
