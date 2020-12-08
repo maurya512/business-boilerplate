@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Product from '../components/Product'
 import { Row, Col } from 'react-bootstrap'
-import axios from 'axios'
+import { listProducts } from '../actions/productListActions'
+import Message from '../components/Message'
+import Loading from '../components/Loader'
+// import axios from 'axios'
 
 const HomeScreen = () => {
-    const [products, setProducts] = useState([])
-
+    const dispatch = useDispatch()
+    const productList = useSelector(state => state.productList)
+    const { loading, error, products } = productList
     useEffect(() => {
-        const fetchProducts = async () => {
-            const { data } = await axios.get('/api/products') 
+        dispatch(listProducts())
+    }, [dispatch])
 
-            setProducts(data)
-        }
-        fetchProducts()
-    }, [])
     return (
         <>
             <h1>LATEST PRODUCTS</h1>
-            <Row>
+            {/* loading spinner */}
+            {/* checks for error and if no error display the products */}
+            {loading ? (<Loading />) : error ? (<Message variant='danger'>{error}</Message>) : (<Row>
                 {/* want to loop through products' array of objects and for each product display the product component */}
                 {products.map(product => (
                     //    determines the screen size each product will hold
@@ -27,7 +30,7 @@ const HomeScreen = () => {
                         {/* <h3>{product.image}</h3> */}
                     </Col>
                 ))}
-            </Row>
+            </Row>)}
         </>
     )
 }
