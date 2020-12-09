@@ -1,21 +1,25 @@
 import bcrypt from 'bcryptjs'
 
+// follows the same data model we have for the users
 const users = [
     {
+        // admin user
         name: 'Admin User',
         email: 'admin@example.com',
-        password: bcrypt.hashSync('12345', 10),
+        // hashes the password synchronously
+        password: bcrypt.hashSync('123456', 10),
         isAdmin: true
     },
     {
+        // regular user
         name: 'John',
         email: 'john@example.com',
-        password: bcrypt.hashSync('12345', 10)    
+        password: bcrypt.hashSync('123456', 10)    
     },
     {
         name: 'Jane',
         email: 'jane@example.com',
-        password: bcrypt.hashSync('12345', 10),
+        password: bcrypt.hashSync('123456', 10),
         isAdmin: true
     }
 ]

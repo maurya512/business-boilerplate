@@ -4,7 +4,7 @@ import { productListReducer } from '../reducers/productReducer'
 
 import axios from 'axios'
 
-// functions that create actions
+// functions that dispatch actions
 export const listProducts = () => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_LIST_REQUEST })

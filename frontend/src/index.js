@@ -1,7 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
-// import the react theme to implement
 import store from './store'
 import './bootstrap.min.css';
 import './index.css';
