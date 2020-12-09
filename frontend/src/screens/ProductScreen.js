@@ -6,7 +6,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import Rating from '../components/Rating'
 import { listProductDetails } from '../actions/productListActions'
-const ProductScreen = ({ match }) => {
+const ProductScreen = ({ history, match }) => {
 
     const [qty, setQty] = useState(0)
 
@@ -18,6 +18,10 @@ const ProductScreen = ({ match }) => {
         dispatch(listProductDetails(match.params.id))
     }, [dispatch, match])
 
+    // the handler to add the items into the cart
+    const addToCartHandler = () => {
+        history.push(`/cart/${match.params.id}?qty=${qty}`)
+    }
     return (
         <>
             {/* A button that redirects to the home page */}
@@ -78,7 +82,7 @@ const ProductScreen = ({ match }) => {
                                         <Row>
                                             <Col>Qty</Col>
                                             <Col>
-                                                <Form.Control as='select' value={qty} onChage={(e) =>
+                                                <Form.Control as='select' value={qty} onChange={(e) =>
                                                     setQty(e.target.value)}
                                                 >
                                                     {[...Array(product.countInStock).keys()].map(x => (
@@ -94,7 +98,7 @@ const ProductScreen = ({ match }) => {
                                 )}
                                 <ListGroup.Item>
                                     {/* a button to add the product into cart which is disabled if product out of stock */}
-                                    <Button className='btn-block' type='button' disabled={product.countInStock === 0} >
+                                    <Button onClick={addToCartHandler} className='btn-block' type='button' disabled={product.countInStock === 0} >
                                         Add to Cart
                                 </Button>
                                 </ListGroup.Item>
