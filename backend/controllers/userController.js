@@ -1,4 +1,5 @@
 import asynchandler from 'express-async-handler'
+import generateToken from '../utils/generateToken.js'
 import User from '../modals/userModal.js'
 
 // authenticate the user by validating the email and password
@@ -17,7 +18,7 @@ const authUser = asynchandler(async (req, res) => {
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
-            token: null
+            token: generateToken(user._id)
         })
     }
     else {
