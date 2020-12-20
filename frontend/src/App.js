@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import HomeScreen from './screens/HomeScreen'
 import ProductScreen from './screens/ProductScreen'
 import CartScreen from './screens/CartScreen'
+import LoginScreen from './screens/LoginScreen';
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
           <Route path='/product/:id' component={ProductScreen}/>
           {/* hits the cart and if needed the id */}
           <Route path='/cart/:id?' component={CartScreen} />
+          <Route path='/login' component={LoginScreen} />
         </Container>
       </main>
       <Footer />
