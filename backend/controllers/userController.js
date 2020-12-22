@@ -1,10 +1,10 @@
-import asynchandler from 'express-async-handler'
+import asyncHandler from 'express-async-handler'
 import generateToken from '../utils/generateToken.js'
 import User from '../modals/userModal.js'
 
 // authenticate the user by validating the email and password
 // send back some data, later send back a token
-const authUser = asynchandler(async (req, res) => {
+const authUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body
     // res.send({email, password})
 
@@ -30,13 +30,13 @@ const authUser = asynchandler(async (req, res) => {
 // desc - register a new user
 // route - POST /api/users
 // access - Public
-const registerUser = asynchandler(async (req, res) => {
+const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body
 
-    const userExists = await User.findOne({email})
+    const userExists = await User.findOne({ email })
 
     // check if the user exists
-    if(userExists) {
+    if (userExists) {
         res.status(400)
         throw new Error('User already exists')
     }
@@ -48,25 +48,25 @@ const registerUser = asynchandler(async (req, res) => {
     })
 
     // check if the user was created 
-    if(user) {
+    if (user) {
         res.status(201).json({
             _id: user._id,
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
         })
-        }
-        else {
-            res.status(400)
-            throw new Error('Invalid User data')
-        }
-    })
+    }
+    else {
+        res.status(400)
+        throw new Error('Invalid User data')
+    }
+})
 
 // GET user profile
 // GET api/users/profile
 // private route
 
-const getUserProfile = asynchandler(async (req, res) => {
+const getUserProfile = asyncHandler(async (req, res) => {
     const user = await User.findById(req.user_id)
     if (user) {
         res.json({
@@ -82,4 +82,30 @@ const getUserProfile = asynchandler(async (req, res) => {
     res.send('Success')
 })
 
-export { authUser, getUserProfile, registerUser }
+// update user profile
+const updateUserProfile = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.user_id)
+    if (user) {
+        user.name = req.body.name || user.name
+        user.email = req.body.email || user.email
+        if (req.body.password) {
+            user.password = req.body.password
+        }
+
+        const updatedUser = await user.save()
+
+        res.json({
+            _id: upatedUser._id,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            isAdmin: updatedUser.isAdmin,
+            token: generateToken(updatedUser._id)
+        })
+    } else {
+        res.status(404)
+        throw new Error('User not found')
+    }
+    // res.send('Success')
+})
+
+export { authUser, getUserProfile, registerUser, updateUserProfile }
